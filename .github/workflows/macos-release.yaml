@@ -28,7 +28,7 @@ jobs:
         run: /opt/homebrew/bin/python3 -m pip install --upgrade pip
 
       - name: install qt5
-        run: /opt/homebrew/bin/brew install qt@5 && export PATH="/opt/homebrew/opt/qt@5/bin:$PATH" && export LDFLAGS="-L/opt/homebrew/opt/qt@5/lib" && export CPPFLAGS="-I/opt/homebrew/opt/qt@5/include" && export PKG_CONFIG_PATH="/opt/homebrew/opt/qt@5/lib/pkgconfig"
+        run: /opt/homebrew/bin/brew install qt@5
 
 #      - name: Install Qt
 #        uses: jurplel/install-qt-action@v4
@@ -39,6 +39,12 @@ jobs:
 #          setup-python: false
 
       - name: Build
+        env:
+          PATH: "/opt/homebrew/opt/qt@5/bin:$PATH"
+          LDFLAGS: "-L/opt/homebrew/opt/qt@5/lib"
+          CPPFLAGS: "-I/opt/homebrew/opt/qt@5/include"
+          PKG_CONFIG_PATH: "/opt/homebrew/opt/qt@5/lib/pkgconfig"
+          
         working-directory: ${{env.SOURCE_DIR}}
         run:  |
               qmake CONFIG+=release ${{env.SOURCE_DIR}}
