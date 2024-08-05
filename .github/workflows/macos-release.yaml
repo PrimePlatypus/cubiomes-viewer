@@ -20,12 +20,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-      
-      - name: bootstrap python
-        run: /opt/homebrew/bin/python3 -m pip install --upgrade pip
           
       - name: fix python config
         run: pip config set global.break-system-packages true
+
+      - name: bootstrap python
+        run: /opt/homebrew/bin/python3 -m pip install --upgrade pip
 
       - name: install qt5
         run: /opt/homebrew/bin/brew install qt@5
