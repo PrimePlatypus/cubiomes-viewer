@@ -52,6 +52,8 @@ jobs:
               CFLAGS="-isysroot /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk" make
 
       - name: Deploy
+        env:
+          PATH: "/opt/homebrew/opt/qt@5/bin:/usr/bin:/bin:$PATH"
         working-directory: ${{env.SOURCE_DIR}}
         run:  |
               macdeployqt ${{env.PROG}}.app -dmg -no-plugins
