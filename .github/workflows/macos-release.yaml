@@ -25,9 +25,7 @@ jobs:
         run: /opt/homebrew/bin/python3 -m pip install --upgrade pip --break-system-packages
 
       - name: fix python config
-        env:
-          amogus: ${{ secrets.AMOGUS }}
-        run: echo $amogus > ~/.config/pip/pip.conf
+        run: pip config set global.break-system-packages true
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
