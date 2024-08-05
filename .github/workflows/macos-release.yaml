@@ -21,6 +21,9 @@ jobs:
         with:
           submodules: recursive
 
+      - name: bootstrap python
+      - run: /opt/homebrew/bin/python3 -m pip install --upgrade pip
+
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
