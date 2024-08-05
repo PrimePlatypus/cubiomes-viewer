@@ -28,7 +28,9 @@ jobs:
         run: /opt/homebrew/bin/python3 -m pip install --upgrade pip
 
       - name: install qt5
-        run: /opt/homebrew/bin/brew install qt@5
+        run: |
+          /opt/homebrew/bin/brew install qt@5
+          /opt/homebrew/bin/brew link qt@5
 
 #      - name: Install Qt
 #        uses: jurplel/install-qt-action@v4
