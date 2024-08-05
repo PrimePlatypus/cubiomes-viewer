@@ -40,7 +40,7 @@ jobs:
 
       - name: Build
         env:
-          PATH: "/usr/bin:/opt/homebrew/opt/qt@5/bin:$PATH"
+          PATH: "/opt/homebrew/opt/qt@5/bin:/usr/bin:/bin:$PATH"
           LDFLAGS: "-L/opt/homebrew/opt/qt@5/lib"
           CPPFLAGS: "-I/opt/homebrew/opt/qt@5/include"
           PKG_CONFIG_PATH: "/opt/homebrew/opt/qt@5/lib/pkgconfig"
