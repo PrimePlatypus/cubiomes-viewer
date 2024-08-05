@@ -40,7 +40,7 @@ jobs:
 
       - name: Build
         env:
-          PATH: "/opt/homebrew/opt/qt@5/bin:$PATH"
+          PATH: "/usr/bin:/opt/homebrew/opt/qt@5/bin:$PATH"
           LDFLAGS: "-L/opt/homebrew/opt/qt@5/lib"
           CPPFLAGS: "-I/opt/homebrew/opt/qt@5/include"
           PKG_CONFIG_PATH: "/opt/homebrew/opt/qt@5/lib/pkgconfig"
@@ -48,6 +48,7 @@ jobs:
         working-directory: ${{env.SOURCE_DIR}}
         run:  |
               qmake CONFIG+=release ${{env.SOURCE_DIR}}
+              eval $(/opt/homebrew/bin/brew shellenv)
               CFLAGS="-isysroot /Applications/Xcode_14.2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.1.sdk" make
 
       - name: Deploy
